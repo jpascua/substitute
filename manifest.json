@@ -3,7 +3,7 @@
     "description": "Replaces a word with another.",
     "version": "1.0",
     "manifest_version": 2,
-    "permissions": ["activeTab"],
+    "permissions": ["activeTab", "storage"],
     "browser_action": {
         "default_popup": "popup.html",
         "default_icon": "hello_extensions.png"
