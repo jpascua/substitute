@@ -1,0 +1,20 @@
+{
+    "name": "Substitute",
+    "description": "Replaces a word with another.",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": ["activeTab"],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": "hello_extensions.png"
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggest_key": {
+                "default": "Ctrl+Shift+F",
+                "mac": "MacCtrl+Shift+F"
+            },
+            "description": "Opens popup.html"
+        }
+    }
+}
