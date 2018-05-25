@@ -10,9 +10,9 @@ submitButton.onclick = function() {
     });
 };
 
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    console.log("onUpdated Listener!");
-    if(changeInfo.status == "complete") {
-        chrome.tabs.executeScript(tabId, {file: "replace.js"});
-    }
-});
+// chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+//     console.log("onUpdated Listener!");
+//     if(changeInfo.status == "complete") {
+//         chrome.tabs.executeScript(tabId, {file: "replace.js"});
+//     }
+// });

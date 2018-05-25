@@ -3,14 +3,15 @@
     "description": "Replaces a word with another.",
     "version": "1.0",
     "manifest_version": 2,
-    "permissions": ["activeTab", "storage", "tabs"],
+    "permissions": ["activeTab", "storage"],
     "browser_action": {
         "default_popup": "popup.html",
         "default_icon": "hello_extensions.png"
     },
     "content_scripts": [{
-        "matches": ["http://*/*", "https://*/*", "*://*/*"],
-        "js": ["popup.js"]
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["background.js"],
+        "run_at": "document_idle"
     }],
     "commands": {
         "_execute_browser_action": {
