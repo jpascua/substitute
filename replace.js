@@ -21,10 +21,8 @@ function replaceWord(words) {
 
         for (var j = 0; j < nodes.length; j++) {
           if (nodes[j].nodeType == 3) {
-            var text = nodes[j].nodeValue;
-
             for(var k = 0; k <= words.length-2; k += 2) {
-                nodes[j].nodeValue = text.replace(new RegExp(words[k], "gi"), words[k + 1]);
+                nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp(words[k], "gi"), words[k + 1]);
             }
           }
         }
