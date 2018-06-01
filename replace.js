@@ -1,9 +1,18 @@
-chrome.storage.sync.get(["textInput1", "textInput2"], function(result) {
-     replaceWord(result.textInput1, result.textInput2);
+console.log("replace.js has loaded");
+chrome.storage.sync.get(["words"], function(result) {
+    if (typeof result.words === "undefined") {
+    } else {
+        console.log(result.words.length);
+        for(var i = 0; i < result.words.length; i++) {
+            console.log(result.words[i]);
+        }
+
+        replaceWord(result.words);
+    }
 })
 
 // Modifies the page by replacing all instances of a word with another.
-function replaceWord(undesiredWord, desiredWord) {
+function replaceWord(words) {
     var elements = document.getElementsByTagName("*");
 
     for (var i = 0; i < elements.length; i++) {
@@ -14,7 +23,9 @@ function replaceWord(undesiredWord, desiredWord) {
           if (nodes[j].nodeType == 3) {
             var text = nodes[j].nodeValue;
 
-            nodes[j].nodeValue = text.replace(new RegExp(undesiredWord, "gi"), desiredWord);
+            for(var k = 0; k <= words.length-2; k += 2) {
+                nodes[j].nodeValue = text.replace(new RegExp(words[k], "gi"), words[k + 1]);
+            }
           }
         }
 

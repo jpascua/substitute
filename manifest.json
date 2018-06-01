@@ -10,7 +10,7 @@
     },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["replace.js"],
+        "js": ["replace.js"]
     }],
     "commands": {
         "_execute_browser_action": {
