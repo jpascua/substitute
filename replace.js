@@ -1,12 +1,8 @@
 console.log("replace.js has loaded");
 chrome.storage.sync.get(["words"], function(result) {
     if (typeof result.words === "undefined") {
+        // Do nothing
     } else {
-        console.log(result.words.length);
-        for(var i = 0; i < result.words.length; i++) {
-            console.log(result.words[i]);
-        }
-
         replaceWord(result.words);
     }
 })
@@ -15,14 +11,19 @@ chrome.storage.sync.get(["words"], function(result) {
 function replaceWord(words) {
     var elements = document.getElementsByTagName("*");
 
+    console.log(Object.keys(words).length);
+
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
         var nodes = element.childNodes;
 
         for (var j = 0; j < nodes.length; j++) {
           if (nodes[j].nodeType == 3) {
-            for(var k = 0; k <= words.length-2; k += 2) {
-                nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp(words[k], "gi"), words[k + 1]);
+            for (key in words) {
+                var undesiredWord = key;
+                var desiredWord = words[key];
+
+                nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp(undesiredWord, "gi"), desiredWord);
             }
           }
         }

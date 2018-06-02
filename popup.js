@@ -1,16 +1,16 @@
 console.log("popup.js has loaded");
+
 let submitButton = document.getElementById("submit");
 let resetButton = document.getElementById("reset");
 
 submitButton.onclick = function() {
     chrome.storage.sync.get("words", function(result) {
         if (typeof result.words === "undefined") {
-            chrome.storage.sync.set({words: []});
+            chrome.storage.sync.set({words: {}});    // Create a new Map to store all words
         } else {
             var wordsCopy = result.words;
 
-            wordsCopy.push(document.getElementById("field1").value);    // Even index will be unwanted word.
-            wordsCopy.push(document.getElementById("field2").value);    // Odd index will be desired word.
+            wordsCopy[document.getElementById("field1").value] = document.getElementById("field2").value;
 
             chrome.storage.sync.set({words: wordsCopy});
 
@@ -22,7 +22,8 @@ submitButton.onclick = function() {
 };
 
 resetButton.onclick = function() {
-    chrome.storage.sync.set({words: []});
+    chrome.storage.sync.set({words: {}});
+    chrome.tabs.reload();
 };
 
 // chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
