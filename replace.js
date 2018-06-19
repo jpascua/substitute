@@ -1,10 +1,7 @@
 console.log("replace.js has loaded");
-chrome.storage.sync.get(["words"], function(result) {
-    if (typeof result.words === "undefined") {
-        // Do nothing
-    } else {
-        replaceWord(result.words);
-    }
+
+chrome.storage.sync.get("words", function(result) {
+    replaceWord(result.words);
 })
 
 // Modifies the page by replacing all instances of a word with another.
@@ -23,7 +20,10 @@ function replaceWord(words) {
                 var undesiredWord = key;
                 var desiredWord = words[key];
 
+                //TODO Fix regex
+                // nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp("[^A-Z0-9]" + undesiredWord + "[^A-Z0-9]", "gi"), desiredWord);
                 nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp(undesiredWord, "gi"), desiredWord);
+
             }
           }
         }

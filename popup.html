@@ -3,14 +3,19 @@
     <head>
     </head>
     <body>
-        <h1>Substitute</h1>
-        <form>
+        <h1 style="text-align: center;">Substitute</h1>
+        <hr>
+        <p id="message" style="color:red;"></p>
+        <form id="form">
             Replace<br>
-            <input type="text" id="field1" placeholder="[Undesired Word]"><br>
+            <input type="text" id="undesiredWord" placeholder="[Undesired Word]"><br>
+            <hr>
             With<br>
-            <input type="text" id="field2" placeholder="[Desired Word]"><br>
-            <input type="button" id="submit" value="Submit">
-            <input type="button" id="reset" value="Reset Variables">
+            <input type="text" id="desiredWord" placeholder="[Desired Word]"><br>
+            <hr>
+            <input type="button" id="submitButton" value="Submit">
+            <hr>
+            <input type="button" id="resetButton" value="Reset Changes">
         </form>
         <script src="popup.js"></script>
     </body>
