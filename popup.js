@@ -26,11 +26,11 @@ submitButton.onclick = function() {
             // Check whether undesired word already exists in Map
             // If it exists, replace that value with desired word
             //TODO: Fix below.
-            for (key in wordsCopy) {
-                if (wordsCopy[key] == undesiredWord) {
-                    wordsCopy[key] = desiredWord;
-                }
-            }
+            // for (key in wordsCopy) {
+            //     if (wordsCopy[key] == undesiredWord) {
+            //         wordsCopy[key] = desiredWord;
+            //     }
+            // }
 
             // Also create a new key, value pair in Map
             wordsCopy[document.getElementById("undesiredWord").value] = document.getElementById("desiredWord").value;
