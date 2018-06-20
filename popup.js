@@ -2,7 +2,7 @@ console.log("popup.js has loaded");
 
 let submitButton = document.getElementById("submitButton");
 let resetButton = document.getElementById("resetButton");
-let message = document.getElementById("message");
+var message = document.getElementById("message");
 // let undesiredWordForm = document.getElementById("undesiredWord");
 // let desiredWordForm = document.getElementById("desiredWord");
 
@@ -20,9 +20,19 @@ submitButton.onclick = function() {
         var undesiredWord = document.getElementById("undesiredWord").value;
         var desiredWord = document.getElementById("desiredWord").value;
 
-        var inputCheck = undesiredWord.match(new RegExp("^[A-Za-z]*$")) != null;    // Check words for special symbols (i.e. regex).
+        var inputCheck = undesiredWord.match(new RegExp("^[A-Za-z]+$")) != null;    // Check words for special symbols (i.e. regex).
 
         if (inputCheck) {
+            // Check whether undesired word already exists in Map
+            // If it exists, replace that value with desired word
+            //TODO: Fix below.
+            for (key in wordsCopy) {
+                if (wordsCopy[key] == undesiredWord) {
+                    wordsCopy[key] = desiredWord;
+                }
+            }
+
+            // Also create a new key, value pair in Map
             wordsCopy[document.getElementById("undesiredWord").value] = document.getElementById("desiredWord").value;
 
             chrome.storage.sync.set({words: wordsCopy});
@@ -32,12 +42,12 @@ submitButton.onclick = function() {
             });
 
             message.style.color = "black";
-            message.innerHTML = "Successfully substituted!"
+            message.innerHTML = "Successfully replaced!"
 
             document.getElementById("form").reset();
         } else {
             message.style.color = "red";
-            message.innerHTML = "Input error. Enter a valid word."
+            message.innerHTML = "Input error.<br>Enter a single valid word."
         }
     });
 };

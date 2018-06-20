@@ -10,12 +10,16 @@ function replaceWord(words) {
 
     console.log(Object.keys(words).length);
 
+    for (key in words) {
+        console.log(key + " = " + words[key]);
+    }
+
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
         var nodes = element.childNodes;
 
         for (var j = 0; j < nodes.length; j++) {
-          if (nodes[j].nodeType == 3) {
+          if (nodes[j].nodeType == 3) {     // Check whether it's a text.
             for (key in words) {
                 var undesiredWord = key;
                 var desiredWord = words[key];
