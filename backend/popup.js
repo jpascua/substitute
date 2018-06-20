@@ -29,7 +29,7 @@ submitButton.onclick = function() {
         var inputCheck = undesiredWord.match(new RegExp("^[A-Za-z]+$")) != null;    // Check words for special symbols (i.e. regex).
 
         if (inputCheck) {
-            // if (wordsCopy.length >= 1) {
+            // if (wordsCopy.length != 0) {
             //     for (var i = 0; i < wordsCopy.length; i++) {
             //         if (wordsCopy[i].undesiredWord == undesiredWord) {
             //             wordsCopy[i].desiredWord = desiredWord;
@@ -46,7 +46,7 @@ submitButton.onclick = function() {
             chrome.storage.sync.set({words: wordsCopy});
 
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.executeScript(tabs[0].id, {file: "replace.js"});
+                chrome.tabs.executeScript(tabs[0].id, {file: "backend/replace.js"});
             });
 
             message.style.color = "black";

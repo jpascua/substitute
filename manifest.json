@@ -5,12 +5,12 @@
     "manifest_version": 2,
     "permissions": ["activeTab", "storage", "tabs"],
     "browser_action": {
-        "default_popup": "popup.html",
-        "default_icon": "hello_extensions.png"
+        "default_popup": "frontend/popup.html",
+        "default_icon": "images/hello_extensions.png"
     },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["replace.js"]
+        "js": ["backend/replace.js"]
     }],
     "commands": {
         "_execute_browser_action": {
