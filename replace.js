@@ -8,11 +8,11 @@ chrome.storage.sync.get("words", function(result) {
 function replaceWord(words) {
     var elements = document.getElementsByTagName("*");
 
-    // console.log(Object.keys(words).length);
-    //
-    // for (key in words) {
-    //     console.log(key + " = " + words[key]);
-    // }
+    console.log(words.length);
+
+    for (var i = 0; i < words.length; i++) {
+        console.log(words[i].undesiredWord + " = " + words[i].desiredWord);
+    }
 
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
@@ -21,13 +21,8 @@ function replaceWord(words) {
         if (element.nodeName != "SCRIPT" && element.nodeName != "STYLE") {
             for (var j = 0; j < nodes.length; j++) {
                 if (nodes[j].nodeType == 3) {     // Check whether it's text.
-                    for (key in words) {
-                        var undesiredWord = key;
-                        var desiredWord = words[key];
-
-                        console.log(nodes[j].nodeValue)
-
-                        nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp(undesiredWord, "gi"), desiredWord);
+                    for (var k = 0; k < words.length; k++) {
+                        nodes[j].nodeValue = nodes[j].nodeValue.replace(new RegExp(words[k].undesiredWord, "gi"), words[k].desiredWord);
 
                     }
                 }

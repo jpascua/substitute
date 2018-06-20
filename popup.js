@@ -3,14 +3,20 @@ console.log("popup.js has loaded");
 let submitButton = document.getElementById("submitButton");
 let resetButton = document.getElementById("resetButton");
 var message = document.getElementById("message");
-// let undesiredWordForm = document.getElementById("undesiredWord");
-// let desiredWordForm = document.getElementById("desiredWord");
+var desiredWordField = document.getElementById("desiredWord");
 
 document.getElementById("message").innerHTML = "";      // Clear message.
 
 chrome.storage.sync.get("words", function(result) {
     if (typeof result.words === "undefined") {
-        chrome.storage.sync.set({words: {}});    // Create a new Map to store all words.
+        chrome.storage.sync.set({words: []});    // Create a new array to store all words.
+    }
+});
+
+desiredWordField.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        submitButton.click();
     }
 });
 
@@ -23,17 +29,19 @@ submitButton.onclick = function() {
         var inputCheck = undesiredWord.match(new RegExp("^[A-Za-z]+$")) != null;    // Check words for special symbols (i.e. regex).
 
         if (inputCheck) {
-            // Check whether undesired word already exists in Map
-            // If it exists, replace that value with desired word
-            //TODO: Fix below.
-            // for (key in wordsCopy) {
-            //     if (wordsCopy[key] == undesiredWord) {
-            //         wordsCopy[key] = desiredWord;
+            // if (wordsCopy.length >= 1) {
+            //     for (var i = 0; i < wordsCopy.length; i++) {
+            //         if (wordsCopy[i].undesiredWord == undesiredWord) {
+            //             wordsCopy[i].desiredWord = desiredWord;
+            //         } else {
+            //             wordsCopy.push({"undesiredWord": undesiredWord, "desiredWord": desiredWord});
+            //         }
             //     }
+            // } else {
+            //     wordsCopy.push({"undesiredWord": undesiredWord, "desiredWord": desiredWord});
             // }
 
-            // Also create a new key, value pair in Map
-            wordsCopy[document.getElementById("undesiredWord").value] = document.getElementById("desiredWord").value;
+            wordsCopy.push({"undesiredWord": undesiredWord, "desiredWord": desiredWord});
 
             chrome.storage.sync.set({words: wordsCopy});
 
@@ -55,6 +63,6 @@ submitButton.onclick = function() {
 resetButton.onclick = function() {
     chrome.storage.sync.remove("words");
     chrome.tabs.reload();   // Reloads the current active tab.
-    chrome.storage.sync.set({words: {}});
+    chrome.storage.sync.set({words: []});
     chrome.runtime.reload();    // Reloads the extension - needed to rerequest permission.
 };
