@@ -2,10 +2,11 @@ console.log("popup.js has loaded");
 
 let submitButton = document.getElementById("submitButton");
 let resetButton = document.getElementById("resetButton");
-var message = document.getElementById("message");
+// var message = document.getElementById("message");
+var undesiredWordField = document.getElementById("undesiredWord");
 var desiredWordField = document.getElementById("desiredWord");
 
-document.getElementById("message").innerHTML = "";      // Clear message.
+// document.getElementById("message").innerHTML = "";      // Clear message.
 
 chrome.storage.sync.get("words", function(result) {
     if (typeof result.words === "undefined") {
@@ -49,13 +50,17 @@ submitButton.onclick = function() {
                 chrome.tabs.executeScript(tabs[0].id, {file: "backend/replace.js"});
             });
 
-            message.style.color = "black";
-            message.innerHTML = "Successfully replaced!"
+            undesiredWordField.classList.remove("is-invalid");
+            undesiredWordField.classList.add("is-valid");
+
+            // message.classList.remove("is-valid");
+            // message.classList.add("is-invalid");
+            // message.innerHTML = "Input error. Enter a single valid word."
 
             document.getElementById("form").reset();
         } else {
-            message.style.color = "red";
-            message.innerHTML = "Input error.<br>Enter a single valid word."
+            undesiredWordField.classList.remove("is-valid");
+            undesiredWordField.classList.add("is-invalid");
         }
     });
 };

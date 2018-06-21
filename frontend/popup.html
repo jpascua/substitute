@@ -1,23 +1,51 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!-- Bootstrap -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+        <div class="tbedges center">
+            <p class="h3">Substitute</p>
+        </div>
     </head>
     <body>
-        <h1>Substitute</h1>
-        <hr>
-        <p id="message"></p>
+        <!-- <p id="message" class="text-danger"></p> -->
         <form id="form">
-            Replace<br>
-            <input type="text" id="undesiredWord" placeholder="[Undesired Word]"><br>
-            <hr>
-            With<br>
-            <input type="text" id="desiredWord" placeholder="[Desired Word]"><br>
-            <hr>
-            <input type="button" id="submitButton" value="Submit">
-            <hr>
-            <input type="button" id="resetButton" value="Reset Changes">
+            <div class="form-group row margin">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Replace</label>
+                <div class="col-sm-10">
+                    <input type="text" id="undesiredWord" placeholder="Undesired Word" class="form-control form-control-sm" required>
+                </div>
+                <div class="valid-feedback">
+                  Successfully replaced!
+                </div>
+                <div class="invalid-feedback">
+                  Input error. Enter a single valid word.
+                </div>
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">With</label>
+                <div class="col-sm-10">
+                    <input type="text" id="desiredWord" placeholder="Desired Word" class="form-control form-control-sm">
+                </div>
+            </div>
+
+            <div class="tbedges center">
+                <input type="button" id="submitButton" value="Submit" class="btn btn-primary btn-sm">
+                <input type="button" id="resetButton" value="Reset" class="btn btn-danger btn-sm">
+            </div>
         </form>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../js/jquery-3.3.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../js/bootstrap.min.js"></script>
+
         <script src="../backend/popup.js"></script>
     </body>
 </html>
