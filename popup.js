@@ -42,7 +42,7 @@ submitButton.onclick = function() {
             chrome.storage.sync.set({words: wordsCopy});
 
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                chrome.tabs.executeScript(tabs[0].id, {file: "backend/replace.js"});
+                chrome.tabs.executeScript(tabs[0].id, {file: "replace.js"});
             });
 
             // Display success message.
@@ -51,6 +51,8 @@ submitButton.onclick = function() {
             desiredWordField.classList.add("is-valid");
 
             document.getElementById("form").reset();
+            // document.getElementById("undesiredWordField").placeholder = "";
+            // document.getElementById("desiredWordField").placeholder = "";
         } else {
             // Display error message
             undesiredWordField.classList.remove("is-valid");
