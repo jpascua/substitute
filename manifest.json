@@ -6,10 +6,21 @@
     "permissions": ["activeTab", "storage", "tabs"],
     "browser_action": {
         "default_popup": "frontend/popup.html",
-        "default_icon": "images/hello_extensions.png"
+        "default_icon": {
+          "16": "images/substitute16.png",
+          "32": "images/substitute32.png",
+          "48": "images/substitute48.png",
+          "128": "images/substitute128.png"
+        }
     },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
         "js": ["backend/replace.js"]
-    }]
+    }],
+    "icons": {
+      "16": "images/substitute16.png",
+      "32": "images/substitute32.png",
+      "48": "images/substitute48.png",
+      "128": "images/substitute128.png"
+    }
 }
