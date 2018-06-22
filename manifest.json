@@ -11,14 +11,5 @@
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
         "js": ["backend/replace.js"]
-    }],
-    "commands": {
-        "_execute_browser_action": {
-            "suggest_key": {
-                "default": "Ctrl+Shift+F",
-                "mac": "MacCtrl+Shift+F"
-            },
-            "description": "Opens popup.html"
-        }
-    }
+    }]
 }

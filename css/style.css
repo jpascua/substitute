@@ -8,18 +8,13 @@
     padding: 10px;
 }
 
-body {
-    height: 100px;
-    width: 225px;
-}
-
 .margin {
     margin: 25px 2.5px 50px 2.5px;
 }
 
-.border {
-    border-style: dashed;
-    border-width: 5px;
+body {
+    height: 100px;
+    width: 225px;
 }
 
 #message {

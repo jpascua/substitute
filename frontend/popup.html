@@ -16,22 +16,17 @@
         </div>
     </head>
     <body>
-        <!-- <p id="message" class="text-danger"></p> -->
         <form id="form">
-            <div class="form-group row margin">
+            <div class="form-group row margin col-sm-10">
                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Replace</label>
-                <div class="col-sm-10">
-                    <input type="text" id="undesiredWord" placeholder="Undesired Word" class="form-control form-control-sm" required>
-                </div>
-                <div class="valid-feedback">
-                  Successfully replaced!
-                </div>
+                <input type="text" id="undesiredWord" placeholder="Undesired Word" class="form-control form-control-sm" required>
                 <div class="invalid-feedback">
                   Input error. Enter a single valid word.
                 </div>
                 <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">With</label>
-                <div class="col-sm-10">
-                    <input type="text" id="desiredWord" placeholder="Desired Word" class="form-control form-control-sm">
+                <input type="text" id="desiredWord" placeholder="Desired Word" class="form-control form-control-sm">
+                <div class="valid-feedback">
+                  Successfully replaced!
                 </div>
             </div>
 
@@ -39,6 +34,8 @@
                 <input type="button" id="submitButton" value="Submit" class="btn btn-primary btn-sm">
                 <input type="button" id="resetButton" value="Reset" class="btn btn-danger btn-sm">
             </div>
+            <div class="form-row">
+
         </form>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

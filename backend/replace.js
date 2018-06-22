@@ -1,5 +1,3 @@
-console.log("replace.js has loaded");
-
 chrome.storage.sync.get("words", function(result) {
     replaceWord(result.words);
 })
@@ -8,11 +6,11 @@ chrome.storage.sync.get("words", function(result) {
 function replaceWord(words) {
     var elements = document.getElementsByTagName("*");
 
-    console.log(words.length);
-
-    for (var i = 0; i < words.length; i++) {
-        console.log(words[i].undesiredWord + " = " + words[i].desiredWord);
-    }
+    // console.log(words.length);
+    //
+    // for (var i = 0; i < words.length; i++) {
+    //     console.log(words[i].undesiredWord + " = " + words[i].desiredWord);
+    // }
 
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
